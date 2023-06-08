@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="musicBean"
-          class="com.leo.spring.RockMusic">
+    <bean id="musicBean" class="com.leo.spring.ClassicalMusic"/>
+    <bean id="musicPlayer" class="com.leo.spring.MusicPlayer">
+        <constructor-arg ref="musicBean"/>
     </bean>
-
 </beans>
