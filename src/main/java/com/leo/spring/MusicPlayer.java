@@ -35,4 +35,13 @@ public class MusicPlayer {
     public void playMusic() {
         musicList.forEach(x -> System.out.println("Playing: " + x.getSong()));
     }
+
+    @Override
+    public String toString() {
+        return "MusicPlayer{" +
+                "musicList=" + musicList +
+                ", name='" + name + '\'' +
+                ", volume=" + volume +
+                '}';
+    }
 }

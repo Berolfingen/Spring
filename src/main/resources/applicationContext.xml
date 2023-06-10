@@ -10,7 +10,7 @@
     <bean id="musicBean" class="com.leo.spring.ClassicalMusic"/>
     <bean id="musicBean1" class="com.leo.spring.RockMusic"/>
     <bean id="musicBean2" class="com.leo.spring.JazzMusic"/>
-    <bean id="musicPlayer" class="com.leo.spring.MusicPlayer">
+    <bean id="musicPlayer" class="com.leo.spring.MusicPlayer" scope="prototype">
         <property name="musicList">
             <list>
                 <ref bean="musicBean"/>
