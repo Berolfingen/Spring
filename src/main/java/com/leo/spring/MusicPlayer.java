@@ -8,6 +8,15 @@ public class MusicPlayer {
     private String name;
     private int volume;
 
+    private MusicPlayer() {
+
+    }
+
+    public static MusicPlayer getMusicPlayer() {
+        System.out.println("Creating MusicPlayer object");
+        return new MusicPlayer();
+    }
+
     public String getName() {
         return name;
     }
@@ -44,4 +53,10 @@ public class MusicPlayer {
                 ", volume=" + volume +
                 '}';
     }
+
+    private void init() {
+        System.out.println("MusicPlayer bean initialization.");
+    }
+
+
 }
