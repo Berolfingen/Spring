@@ -5,19 +5,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:component-scan base-package="com.leo.spring"/>
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="musicBean" class="com.leo.spring.ClassicalMusic"
-          init-method="init" destroy-method="destroy"/>
-    <bean id="musicBean1" class="com.leo.spring.RockMusic"/>
-    <bean id="musicBean2" class="com.leo.spring.JazzMusic"/>
     <bean id="musicPlayer" class="com.leo.spring.MusicPlayer" scope="prototype"
           init-method="init" factory-method="getMusicPlayer">
         <property name="musicList">
             <list>
-                <ref bean="musicBean"/>
-                <ref bean="musicBean1"/>
-                <ref bean="musicBean2"/>
+                <ref bean="classicalMusic"/>
+                <ref bean="rockMusic"/>
+                <ref bean="jazzMusic"/>
             </list>
         </property>
         <property name="name" value="${musicPlayer.name}"/>
