@@ -1,5 +1,8 @@
 package com.leo.spring;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ClassicalMusic implements Music {
 
     private void init() {
