@@ -1,6 +1,15 @@
 package com.leo.spring;
 
 public class ClassicalMusic implements Music {
+
+    private void init() {
+        System.out.println("ClassicalMusic bean initialization.");
+    }
+
+    private void destroy() {
+        System.out.println("Classical music bean destruction.");
+    }
+
     @Override
     public String getSong() {
         return "Classical";
