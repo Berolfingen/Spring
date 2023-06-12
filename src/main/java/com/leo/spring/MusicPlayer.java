@@ -1,20 +1,19 @@
 package com.leo.spring;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
+    private final ClassicalMusic classicalMusic;
+    private final RockMusic rockMusic;
     private String name;
     private int volume;
 
-    private MusicPlayer() {
-
-    }
-
-    public static MusicPlayer getMusicPlayer() {
-        System.out.println("Creating MusicPlayer object");
-        return new MusicPlayer();
+    @Autowired
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
     }
 
     public String getName() {
@@ -33,30 +32,11 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    public List<Music> getMusicList() {
-        return musicList;
-    }
-
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public void playMusic() {
-        musicList.forEach(x -> System.out.println("Playing: " + x.getSong()));
-    }
-
-    @Override
-    public String toString() {
-        return "MusicPlayer{" +
-                "musicList=" + musicList +
-                ", name='" + name + '\'' +
-                ", volume=" + volume +
-                '}';
+    public String playMusic() {
+        return "Playing: " + classicalMusic.getSong() + ", Playing: " + rockMusic.getSong();
     }
 
     private void init() {
         System.out.println("MusicPlayer bean initialization.");
     }
-
-
 }
