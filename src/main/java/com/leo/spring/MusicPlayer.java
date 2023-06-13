@@ -1,42 +1,21 @@
 package com.leo.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MusicPlayer {
-    private final ClassicalMusic classicalMusic;
-    private final RockMusic rockMusic;
-    private String name;
-    private int volume;
+    private final Music music;
+    private final Music music1;
 
     @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
+    public MusicPlayer(@Qualifier("rockMusic") Music music, @Qualifier("classicalMusic") Music music1) {
+        this.music = music;
+        this.music1 = music1;
     }
 
     public String playMusic() {
-        return "Playing: " + classicalMusic.getSong() + ", Playing: " + rockMusic.getSong();
-    }
-
-    private void init() {
-        System.out.println("MusicPlayer bean initialization.");
+        return "Playing: " + music.getSong() + ", " + music1.getSong();
     }
 }
